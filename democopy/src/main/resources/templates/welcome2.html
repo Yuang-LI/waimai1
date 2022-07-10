@@ -1,0 +1,46 @@
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">  
+<head>  
+    <title>Log in page</title>  
+    <link th:href="@{/public/welcome2.css}" rel="stylesheet" />  
+
+</head>  
+<body>  
+<div id="container">  
+    <h2>登陆页面</h2>  
+    <form th:action="@{/employee}" method="post">  
+    <form>
+
+        <!-- <div th:if="${param.error}" class="alert error">Invalid password</div> -->
+        <label for="username">用户名</label>  
+        <input type="text" id="username" name="username" autofocus="autofocus" placeholder="请输入账户" maxlength="20" minlength="1"/>  
+        <label for="password">密码</label>  
+        <input type="password" id="password" name="password" placeholder="请输入密码" maxlength="20" minlength="1"/>  
+        <input id="submit" type="submit" value="登陆" onclick="CheckInputValid();"/>  
+    </form> 
+
+    <p th:if="${loginError}" class="error">Wrong user or password</p>  
+</div>  
+<script>
+    // let username_input = document.getElementById("username").value;
+    // //const username_input = document.querySelector('input[type="text"]');
+    // let userpassword_input = document.getElementById("password").value;
+    //const userpassword_input = document.querySelector('input[type="password"]');
+    const login_btn = document.querySelector('#submit');
+    function CheckInputValid(){
+        let userpassword_input = document.getElementById("password").value;
+        let username_input = document.getElementById("username").value;
+        if (username_input.length == 0 || userpassword_input.length ==0){
+            alert("the input field can not be empty !");
+            login_btn.disabled = true;
+            location.href = "welcome2";
+         }
+        //else{
+        //     location.href = "manager.html";
+        //     alert("enter");
+        // }
+    }image.png
+</script>
+
+</body>  
+</html>
